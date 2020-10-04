@@ -3,8 +3,8 @@
 
 function rbenv_installer() {
     #Download rbenv pkgbuild with -O flag i rename it into PKGBUILD
-    wget -O PKGBUILD "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=rbenv"
-    wget -O rbenv.install "https://aur.archlinux.org/cgit/aur.git/plain/rbenv.install?h=rbenv"
+    curl "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=rbenv" --output PKGBUILD
+    curl "https://aur.archlinux.org/cgit/aur.git/plain/rbenv.install?h=rbenv" --output rbenv.install
     makepkg -csi
     echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 
@@ -12,7 +12,7 @@ function rbenv_installer() {
 }
 
 function ruby_builder() {
-    wget -O PKGBUILD "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=ruby-build"
+    curl "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=ruby-build" --output PKGBUILD
     makepkg -csi
     cd ..
     rm -rf dev-tools
